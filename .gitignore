@@ -1,0 +1,15 @@
+# Terraform related
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Variables
+*.tfvars
+*.tfvars.json
+
+# Ignore private keys
+*.pem
+
+# Ignore Infracost
+.infracost
