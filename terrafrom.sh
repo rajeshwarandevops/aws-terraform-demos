@@ -7,6 +7,8 @@ set -e
 echo ">>> Formatting Terraform files..."
 terraform fmt -recursive
 
+sleep 05
+
 # Validate Terraform configuration
 echo ">>> Validating Terraform configuration..."
 terraform validate
@@ -15,7 +17,7 @@ terraform validate
 echo ">>> Running Terraform plan..."
 terraform plan 
 
-sleep 10
+sleep 05
 
 # Apply the plan automatically with approval
 echo ">>> Applying Terraform changes..."
