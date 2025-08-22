@@ -62,4 +62,3 @@ flowchart TB
     classDef tls fill:#FFA500,stroke:#333,stroke-width:1px;
     classDef file fill:#F5DEB3,stroke:#333,stroke-width:1px;
     classDef ami fill:#DCDCDC,stroke:#333,stroke-width:1px;
-# rm -rf .terraform .terraform;ocl.hcl terraform.tfstate terraform.tfstate.backup
