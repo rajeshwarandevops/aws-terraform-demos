@@ -19,7 +19,7 @@ data "aws_ami" "amazon_linux_2023" {
 
 # Launch multiple EC2 instances
 resource "aws_instance" "dfu_instance" {
-  #count         = 2 # Change this to how many you want
+  count         = 2 # Change this to how many you want
   ami                         = data.aws_ami.amazon_linux_2023.id
   instance_type               = "t3.micro"
   key_name                    = aws_key_pair.dfu_key.key_name
@@ -30,7 +30,7 @@ resource "aws_instance" "dfu_instance" {
   user_data = file("nginx.sh")
 
   tags = {
-    # Name = "dfu-instance-${count.index + 1}"
-    Name = "Mobileapp-Web"
+    Name = "dfu-instance-${count.index + 1}"
+   # Name = "Mobileapp-Web"
   }
 }

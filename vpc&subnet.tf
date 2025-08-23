@@ -8,22 +8,25 @@ resource "aws_vpc" "my-vpc" {
   }
 }
 
-# PUBLIC SUBNET 
-resource "aws_subnet" "Public-Subnet-A" {
-  vpc_id     = aws_vpc.my-vpc.id
-  cidr_block = "10.0.1.0/24"
+# PUBLIC SUBNET - Zone A (Singapore)
+resource "aws_subnet" "public_subnet_a" {
+  vpc_id                  = aws_vpc.my-vpc.id
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "ap-southeast-1a"
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "Mobileapp-Public-Subnet-A"
   }
 }
 
-# PRIVATE SUBNET 
-resource "aws_subnet" "Privatesubnet-A" {
-  vpc_id     = aws_vpc.my-vpc.id
-  cidr_block = "10.0.2.0/24"
+# PRIVATE SUBNET - Zone B (Singapore)
+resource "aws_subnet" "public_subnet_b" {
+  vpc_id            = aws_vpc.my-vpc.id
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "ap-southeast-1b"
 
   tags = {
-    Name = "Mobileapp-Private-Subnet-A"
+    Name = "Mobileapp-Public-Subnet-B"
   }
 }

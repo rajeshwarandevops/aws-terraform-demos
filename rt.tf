@@ -14,6 +14,11 @@ resource "aws_route_table" "public-rt" {
 
 # Associate Public Subnet with Route Table
 resource "aws_route_table_association" "public-subnet--A-assoc" {
-  subnet_id      = aws_subnet.Public-Subnet-A.id
+  subnet_id      = aws_subnet.public_subnet_a.id
+  route_table_id = aws_route_table.public-rt.id
+}
+
+resource "aws_route_table_association" "public-subnet--B-assoc" {
+  subnet_id      = aws_subnet.public_subnet_a.id
   route_table_id = aws_route_table.public-rt.id
 }
