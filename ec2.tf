@@ -15,22 +15,18 @@ data "aws_ami" "amazon_linux_2023" {
   }
 }
 
-# Launch EC2 instance
-
 # Launch multiple EC2 instances
 resource "aws_instance" "dfu_instance" {
-  count         = 2 # Change this to how many you want
+  count                       = length(local.subnets)
   ami                         = data.aws_ami.amazon_linux_2023.id
   instance_type               = "t3.micro"
   key_name                    = aws_key_pair.dfu_key.key_name
   vpc_security_group_ids      = [aws_security_group.dfusg.id]
-  subnet_id                   = aws_subnet.Public-Subnet-A.id
+  subnet_id                   = local.subnets[count.index] # deploy instances Zone A & Zone B
   associate_public_ip_address = true
-  # Load script from file
-  user_data = file("nginx.sh")
+  user_data                   = file("nginx.sh")
 
   tags = {
     Name = "dfu-instance-${count.index + 1}"
-   # Name = "Mobileapp-Web"
   }
 }
